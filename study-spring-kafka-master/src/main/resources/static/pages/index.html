@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>测试</title>
+</head>
+<script src="jquery-2.1.4.js"></script>
+<script language="JavaScript">
+    function ajaxRequest(type, url, dataType, jsonData, callback) {
+        var async = true;
+        if (arguments.length > 5)
+            async = arguments[arguments.length - 1];
+        $.ajax({
+            async: async,
+            type: type, // 提交方式 get/post
+            url: url,
+            dataType: dataType,
+            data: {
+                data: jsonData
+            },
+            success: function (data) {
+                callback(data);
+            }
+        });
+    }
+
+    function showData() {
+        debugger
+    }
+
+    function preview() {
+        var data = {};
+        data.id = 284;
+        // ajaxRequest("get", "http://192.168.10.100:8012/api/k12/courseware?id=284", "jsonp", null, function(){
+        //     debugger
+        // });
+        // $.ajax({
+        //     url: "http://localhost:8012/api/k12/courseware?id=284&$key=U_C_639_55678&$token=4fc46deffee74b4798101a26a7990622",
+        //     type: "GET",   //post请求方式
+        //     contentType: "application/json;charset=utf-8",
+        //     dataType: "jsonp",
+        //     jsonp: "theFunction",   //指定参数名称
+        //     jsonpCallback: "showData",  //指定回调函数名称
+        //     success: function (data) {
+        //         debugger
+        //     },
+        //     error:function(e){
+        //         debugger
+        //     }
+        // });
+        // window.open("http://localhost:8012/api/k12/courseware?id=284&$key=U_C_639_55678&$token=06140a7dffaf4b07a746f6950b22ce4e");
+        // window.open("http://localhost:8012/api/k12/courseware/639/284/55678/7.第七讲：受力分析 (Published)/?$key=U_C_639_55678&$token=db6ae21598da4458a9d049144140fb4b");
+        try {
+            var open = window.open("http://localhost:8082/hello/courseware/639/284/55678/7.第七讲：受力分析 (Published)/index.html");
+            var req = new XMLHttpRequest();
+            req.open('GET', document.location, false);
+            req.send(null);
+            var headers = req.getAllResponseHeaders().toLowerCase();
+            alert(headers);
+        }catch(error){
+            debugger
+        }
+    }
+
+    function doLogin() {
+        document.loginform.submit();
+    }
+</script>
+<body>
+<input type="button" value="预览" onclick="preview();"/>
+<form name="loginform" action='http://localhost:8012/api/k12/courseware/639/284/55678/7.第七讲：受力分析 (Published)/'
+      method="get" target="_blank">
+    <input type="hidden" name="$key" id="$key" value="U_C_639_55678">
+    <input type="hidden" name="$token" id="$token" value="db6ae21598da4458a9d049144140fb4b">
+</form>
+</body>
+</html>

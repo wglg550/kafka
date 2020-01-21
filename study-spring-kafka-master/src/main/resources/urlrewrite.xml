@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+     <rule>
+         <from>/test123.html</from>
+         <to>/pages/index.html</to>
+     </rule>
+
+     <!--<rule>
+         <from>/courseware/639/284/55678/index.html</from>
+         <to>/courseware/639/284/55678/7.第七讲：受力分析 (Published)/index.html</to>
+     </rule>-->
+
+</urlrewrite>
